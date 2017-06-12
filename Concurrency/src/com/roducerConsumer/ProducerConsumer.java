@@ -2,6 +2,9 @@ package com.roducerconsumer;
 
 public class ProducerConsumer {
 
+	/*
+	 * an illustration of Producer Consumer pattern
+	 */
 	
 	private static Object  key =  new Object();
 	
