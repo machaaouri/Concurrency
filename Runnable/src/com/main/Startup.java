@@ -1,5 +1,6 @@
 package com.main;
 
+import com.dead.locking.DeadLock;
 import com.race.condition.LongWrapper;
 import com.runnable.MyRunnable;
 
@@ -11,7 +12,8 @@ public class Startup {
 	 */
 	public Startup()
 	{
-		Race();
+		DeadLocking();
+		//Race();
 		//runnable();
 	}
 	
@@ -62,6 +64,38 @@ public class Startup {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} 
+		
+	}
+	
+	
+	/*
+	 * Dead lock example
+	 */
+	void DeadLocking()
+	{
+		final DeadLock deadLock =  new DeadLock();
+	
+		Runnable r1 = new Runnable(){
+			public void run(){ deadLock.FuncA();}
+		};
+		
+		Runnable r2 = new Runnable(){
+			public void run(){ deadLock.FuncB();}
+		};
+		
+		Thread t1 = new Thread(r1);
+		t1.start();
+		
+		Thread t2 = new Thread(r2);
+		t2.start();
+		
+		try {
+			t1.join();
+			t2.join();
+			
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
