@@ -2,6 +2,8 @@ package com.main;
 
 import com.dead.locking.DeadLock;
 import com.race.condition.LongWrapper;
+import com.roducerConsumer.ProducerConsumer;
+import com.roducerConsumer.ProducerConsumer.*;
 import com.runnable.MyRunnable;
 
 public class Startup {
@@ -11,7 +13,8 @@ public class Startup {
 	 */
 	public Startup()
 	{
-		DeadLocking();
+		ProduceConsume();
+		//DeadLocking();
 		//Race();
 		//runnable();
 	}
@@ -98,6 +101,55 @@ public class Startup {
 		
 	}
 	
+	/*
+	 * Producer Consumer example
+	 */
+	void ProduceConsume()
+	{
+		ProducerConsumer.Init(10);
+		
+		final Producer producer =  new Producer();
+		final Consumer consumer =  new Consumer();
+		
+		Runnable produce = new Runnable(){
+			public void run(){ 
+				for(int i = 0 ; i < 50 ; i++)
+				{
+					producer.produce();
+				}
+				System.out.println("Done producing !");
+			}
+		};
+		
+		Runnable consume = new Runnable(){
+			public void run(){ 
+				for(int i = 0 ; i < 50 ; i++)
+				{
+					consumer.consume();
+				}
+				System.out.println("Done consuming !");
+			}
+		};
+		
+		Thread produceTask =  new Thread(produce);
+		Thread consumeTask =  new Thread(consume);
+		
+		produceTask.start();
+		consumeTask.start();
+		
+		try {
+			// wait for the threads to complete
+			produceTask.join();
+			consumeTask.join();
+			
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("he buffer contains : " + ProducerConsumer.Count());
+		
+		
+	}
 
 	public static void main(String[] args) {
 		
