@@ -1,4 +1,4 @@
-package com.roducerConsumer;
+package com.roducerconsumer;
 
 public class ProducerConsumer {
 

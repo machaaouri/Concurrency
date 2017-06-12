@@ -1,4 +1,4 @@
-package com.dead.locking;
+package com.deadlocking;
 
 public class DeadLock {
 	

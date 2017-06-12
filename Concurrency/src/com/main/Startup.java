@@ -1,9 +1,9 @@
 package com.main;
 
-import com.dead.locking.DeadLock;
-import com.race.condition.LongWrapper;
-import com.roducerConsumer.ProducerConsumer;
-import com.roducerConsumer.ProducerConsumer.*;
+import com.deadlocking.DeadLock;
+import com.racecondition.LongWrapper;
+import com.roducerconsumer.ProducerConsumer;
+import com.roducerconsumer.ProducerConsumer.*;
 import com.runnable.MyRunnable;
 
 public class Startup {

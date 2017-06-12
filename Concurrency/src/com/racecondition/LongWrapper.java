@@ -1,4 +1,4 @@
-package com.race.condition;
+package com.racecondition;
 
 public class LongWrapper {
 	
