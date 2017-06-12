@@ -4,7 +4,8 @@ public class DeadLock {
 	
 	/*
 	 * Creating a possible dead lock
-	 * if someone calls FuncA & FuncB at the same time
+	 * if someone calls FuncA & FuncB at the same time there will be a dead lock unless we synchronize them
+	 *
 	 */
 	
 	private Object  key1 =  new Object();
