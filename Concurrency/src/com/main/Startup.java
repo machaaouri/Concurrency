@@ -6,7 +6,6 @@ import com.runnable.MyRunnable;
 
 public class Startup {
 
-
 	/*
 	 * uncomment the Example you want to execute
 	 */
