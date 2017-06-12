@@ -1,6 +1,7 @@
 package com.main;
 
 import com.deadlocking.DeadLock;
+import com.falsesharing.FalseSharing;
 import com.racecondition.LongWrapper;
 import com.roducerconsumer.ProducerConsumer;
 import com.roducerconsumer.ProducerConsumer.*;
@@ -13,7 +14,8 @@ public class Startup {
 	 */
 	public Startup()
 	{
-		ProduceConsume();
+		benchmark();
+		//ProduceConsume();
 		//DeadLocking();
 		//Race();
 		//runnable();
@@ -148,6 +150,21 @@ public class Startup {
 		
 		System.out.println("he buffer contains : " + ProducerConsumer.Count());
 		
+		
+	}
+	
+	void benchmark()
+	{
+       
+        try {
+        	  final long start = System.currentTimeMillis();
+			  FalseSharing.Test();
+			  System.out.printf("duration = %dms",(System.currentTimeMillis() - start));
+			  
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+       
 		
 	}
 
