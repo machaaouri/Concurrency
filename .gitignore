@@ -5,6 +5,7 @@
 *.log
 
 *.metadata/
+*.settings
 
 # BlueJ files
 *.ctxt
